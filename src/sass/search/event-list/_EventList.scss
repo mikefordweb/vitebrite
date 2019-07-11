@@ -1,0 +1,197 @@
+.EventList {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $color-white;
+    border-right: 1px solid $color-dashboard;
+    overflow: hidden;
+}
+
+.EventList-feature {
+    width: 100%;
+    padding: 35px;
+    border-bottom: 1px solid $color-dashboard;
+}
+
+.EventList-breadcrumbs {
+    @include font-size(1.6);
+    margin-bottom: 20px;
+}
+
+.EventList-events {
+    width: 100%;
+    height: calc(100% - 180px);
+    overflow-y: auto;
+}
+
+.vitebrite-modal,
+.vitebrite-post
+ {
+    position: absolute;
+    top: 40px;
+    left: 550px;
+    right: 91px;
+    bottom: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    min-width: 500px;
+    max-height: 344px;
+}
+
+.vitebrite-modal {
+    max-height: 370px;
+}
+
+.vitebrite-post {
+    border-radius: 12px;
+    max-height: inherit;
+    overflow: hidden;
+}
+
+.modal-post-header {
+    position: relative;
+    width: 110%;
+    height: 40px;
+    background-color: #0282ff;
+    top: -20px;
+    left: -20px;
+}
+
+.modal-post-back {
+    position: relative;
+    line-height: 40px;
+    color: #fff;
+    margin-left: 20px;
+}
+
+a.modal-post-back:hover {
+    color: #fff;
+}
+
+a.modal-post-back {
+    color:#fff;
+}
+
+.modal-post-image {
+    display: inline-block;
+    vertical-align: top !important;
+    border-radius: 4px;
+}
+
+.modal-post-form-hr {
+    width: 350px;
+    height: 1px;
+    border-bottom: 1px solid #ebeef5;
+    margin-top: 20px;
+}
+
+.first-name-label {
+    display: block;
+    margin-top: 20px;
+}
+
+.modal-post-label {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.last-name-label,
+.email-label,
+.phone-label {
+    margin-top: 15px;
+}
+
+.modal-post-input {
+    width: 350px;
+    height: 34px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #cbd2dc;
+}
+
+.modal-post-title {
+    display: inline-block;
+    margin-left: 20px;
+    max-width: 231px;
+}
+
+.modal-post-title-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.modal-close,
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #002d5b;
+}
+
+.modal-title {
+    font-size: 1.6em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-address {
+    font-size: 1.6em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.modal-description {
+    line-height: 1.5;
+}
+
+a.bookit-btn {
+    display: block;
+    position: relative;
+    margin: 32px auto 0 auto;
+    width: 140px;
+    height: 36px;
+    line-height: 36px;
+    background-color: #0282ff;
+    color: #fff;
+    border: 0;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.Search-content {
+    background-color: #1d426c;
+}
+
+.purchase-btn {
+    display: block;
+    position: absolute;
+    right: 20px;
+    width: 172px;
+    height: 36px;
+    line-height: 32px;
+    background-color: #1bbd72;
+    color: #fff !important;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+a.bookit-btn:hover {
+    color: #fff;
+}
+
+a.purchase-btn:hover {
+    color: #fff;
+}

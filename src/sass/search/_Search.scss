@@ -1,0 +1,20 @@
+$event-list-width: 460px;
+
+@import "event-list/EventList";
+
+.Search {
+    width: 100%;
+}
+
+.Search-content {
+    position: absolute;
+    top: 0;
+    left: $event-list-width;
+    width: calc(100vw - #{$event-list-width});
+    height: 100vh;
+}
+
+.ReactModal__Content {
+    left: 550px;
+    right: 234px;
+}
