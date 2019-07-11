@@ -16,6 +16,7 @@
 }
 
 .EventList-breadcrumbs {
+    display: none;
     @include font-size(1.6);
     margin-bottom: 20px;
 }
@@ -169,7 +170,7 @@ a.bookit-btn {
 }
 
 .Search-content {
-    background-color: #1d426c;
+
 }
 
 .purchase-btn {
