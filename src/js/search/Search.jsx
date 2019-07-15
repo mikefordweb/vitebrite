@@ -7,8 +7,10 @@ import EventList from './event-list/EventList';
 const Search = ({
     selectedEvent,
     events,
-    setEvent
+    setEvent,
+    userEvents
 }) => {
+    console.log("userEvents: " + userEvents);
     if (selectedEvent === null) {
         selectedEvent = {};
     }
@@ -16,6 +18,7 @@ const Search = ({
         <div className="Search">
             <EventList
                 events={events}
+                userEvents={events}
                 selectedEvent={selectedEvent}
                 setEvent={setEvent}
             />

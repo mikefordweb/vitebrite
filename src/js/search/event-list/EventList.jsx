@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import TextButton from 'common/TextButton';
 import EventItem from 'event/EventItem';
-import ReactModal from 'react-modal';
 import {push} from 'connected-react-router';
 
 export default class EventList extends PureComponent {

@@ -34,9 +34,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var common_TextButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! common/TextButton */ "../../../../src/js/common/TextButton.jsx");
 /* harmony import */ var event_EventItem__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! event/EventItem */ "../../../../src/js/event/EventItem.jsx");
-/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-modal */ "../../../react-modal/lib/index.js");
-/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! connected-react-router */ "../../../connected-react-router/esm/index.js");
+/* harmony import */ var connected_react_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! connected-react-router */ "../../../connected-react-router/esm/index.js");
 
 
 
@@ -51,7 +49,6 @@ __webpack_require__.r(__webpack_exports__);
   var enterModule = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : __webpack_require__(/*! react-hot-loader */ "../../../react-hot-loader/index.js")).enterModule;
   enterModule && enterModule(module);
 })();
-
 
 
 
@@ -120,7 +117,7 @@ function (_PureComponent) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      Object(connected_react_router__WEBPACK_IMPORTED_MODULE_14__["push"])('/checkout');
+      Object(connected_react_router__WEBPACK_IMPORTED_MODULE_13__["push"])('/checkout');
       console.log('handleSubmit');
     }
   }, {
@@ -137,80 +134,7 @@ function (_PureComponent) {
         className: "EventList-feature"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "EventList-breadcrumbs"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(common_TextButton__WEBPACK_IMPORTED_MODULE_11__["default"], null, "Chicago"), " > Millennium Park"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("p", null, events.length, " Events Available")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_13___default.a, {
-        isOpen: this.state.showPostModal,
-        contentLabel: "Post Modal",
-        ariaHideApp: false,
-        className: "vitebrite-post",
-        closeTimeoutMS: 2000
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-header"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("a", {
-        href: "",
-        className: "modal-post-back",
-        onClick: this._onHandleClosePostModal
-      }, "Back to Search")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("img", {
-        className: "modal-post-image",
-        src: selectedEvent.image
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-title"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-title-text"
-      }, selectedEvent.title), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-title-distance"
-      }, selectedEvent.distance)), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-form-hr"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "first-name",
-        className: "modal-post-label first-name-label"
-      }, "First Name"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "first-name",
-        className: "first-name modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "last-name",
-        className: "modal-post-label last-name-label"
-      }, "Last Name"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "last-name",
-        className: "modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "email",
-        className: "modal-post-label email-label"
-      }, "Email"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "email",
-        className: "modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "phone",
-        className: "modal-post-label phone-label"
-      }, "Phone Number"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "phone",
-        className: "modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "submit",
-        value: (selectedEvent.price / 100).toFixed(2),
-        className: "purchase-btn"
-      }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_13___default.a, {
-        isOpen: this.state.showGetModal,
-        contentLabel: "Get Modal",
-        ariaHideApp: false,
-        className: "vitebrite-modal",
-        closeTimeoutMS: 2000
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("a", {
-        href: "#",
-        className: "modal-close",
-        onClick: this._onHandleCloseGetModal
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-title modal-text"
-      }, "Event Details"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-address modal-text"
-      }, selectedEvent.title), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-description"
-      }, selectedEvent.description), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("a", {
-        href: "#",
-        className: "bookit-btn",
-        onClick: this._onShowPostModal
-      }, "$", (selectedEvent.price / 100).toFixed(2), " | Book it!")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(common_TextButton__WEBPACK_IMPORTED_MODULE_11__["default"], null, "Chicago"), " > Millennium Park"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("p", null, events.length, " Events Available")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "EventList-events"
       }, _babel_runtime_corejs3_core_js_stable_instance_map__WEBPACK_IMPORTED_MODULE_0___default()(events).call(events, function (event) {
         return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(event_EventItem__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -260,7 +184,40 @@ _babel_runtime_corejs3_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_8___defau
 })();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/harmony-module.js */ "../../../webpack/buildin/harmony-module.js")(module)))
 
-/***/ })
+/***/ }),
+
+/***/ "../../../exenv/index.js":
+false,
+
+/***/ "../../../react-modal/lib/components/Modal.js":
+false,
+
+/***/ "../../../react-modal/lib/components/ModalPortal.js":
+false,
+
+/***/ "../../../react-modal/lib/helpers/ariaAppHider.js":
+false,
+
+/***/ "../../../react-modal/lib/helpers/classList.js":
+false,
+
+/***/ "../../../react-modal/lib/helpers/focusManager.js":
+false,
+
+/***/ "../../../react-modal/lib/helpers/safeHTMLElement.js":
+false,
+
+/***/ "../../../react-modal/lib/helpers/scopeTab.js":
+false,
+
+/***/ "../../../react-modal/lib/helpers/tabbable.js":
+false,
+
+/***/ "../../../react-modal/lib/index.js":
+false,
+
+/***/ "../../../warning/browser.js":
+false
 
 })
-//# sourceMappingURL=main.a6fa2899dedef9ed239f.hot-update.js.map
+//# sourceMappingURL=main.af08ee5c66f05dc66dca.hot-update.js.map

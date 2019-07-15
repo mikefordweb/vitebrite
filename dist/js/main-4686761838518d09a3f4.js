@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "b5bed03c932507d3b445";
+/******/ 	var hotCurrentHash = "4686761838518d09a3f4";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -827,13 +827,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App(_ref) {
-  var events = _ref.events;
+  var events = _ref.events,
+      userEvents = _ref.userEvents;
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     exact: true,
     path: "/",
     render: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(search_Search__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        events: events
+        events: events,
+        userEvents: userEvents
       });
     }
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
@@ -966,6 +968,8 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this._loadEvents();
+
+      this._loadUserEvents();
     }
   }, {
     key: "_loadEvents",
@@ -981,7 +985,7 @@ function (_Component) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_13___default.a.get('/events');
+                return axios__WEBPACK_IMPORTED_MODULE_13___default.a.get('http://localhost:8000/api/events');
 
               case 3:
                 _ref = _context2.sent;
@@ -1013,11 +1017,57 @@ function (_Component) {
       return _loadEvents;
     }()
   }, {
+    key: "_loadUserEvents",
+    value: function () {
+      var _loadUserEvents2 = _babel_runtime_corejs3_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+      /*#__PURE__*/
+      _babel_runtime_corejs3_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _ref2, data;
+
+        return _babel_runtime_corejs3_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_13___default.a.get('http://localhost:3001/api/getData');
+
+              case 3:
+                _ref2 = _context3.sent;
+                data = _ref2.data;
+                console.log(data);
+                this.setState({
+                  userEvents: data
+                });
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
+                console.log('Error loading event data: ', _context3.t0); // eslint-disable-line no-console
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee2, this, [[0, 9]]);
+      }));
+
+      function _loadUserEvents() {
+        return _loadUserEvents2.apply(this, arguments);
+      }
+
+      return _loadUserEvents;
+    }()
+  }, {
     key: "render",
     value: function render() {
       var _this$state = this.state,
           isLoading = _this$state.isLoading,
-          events = _this$state.events;
+          events = _this$state.events,
+          userEvents = _this$state.userEvents;
 
       if (isLoading) {
         return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
@@ -1032,7 +1082,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(connected_react_router__WEBPACK_IMPORTED_MODULE_12__["ConnectedRouter"], {
         history: Object(store_store__WEBPACK_IMPORTED_MODULE_14__["getHistory"])()
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        events: events
+        events: events,
+        userEvents: userEvents
       }))));
     }
   }, {
@@ -1690,13 +1741,47 @@ function (_PureComponent) {
       });
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: classes
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(common_Image__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        src: image
-      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "EventItem-info"
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", null, title), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", null, distance), showDetails && react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(common_TextButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        onClick: this._onDetailsClick
-      }, "Details")));
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "date-time-table"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "date-time-column"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
+        htmlFor: "date-start-date"
+      }, "Start Date"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "date-start-date"
+      }, "07/09/2019")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "date-time-column"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
+        htmlFor: "date-end-date"
+      }, "End Date"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "date-end-date"
+      }, "07/20/2019"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EventItem-email"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-firstname"
+      }, "Mike"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-lastname"
+      }, "Ford"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-email"
+      }, "mike@mikefordweb.com")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-firstname"
+      }, "Mike"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-lastname"
+      }, "Ford"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-email"
+      }, "floyd1985@hotmail")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-firstname"
+      }, "Megan"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-lastname"
+      }, "Ford"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "EmailItem-email"
+      }, "meggin19@hotmail.com"))));
     }
   }, {
     key: "__reactstandin__regenerateByEval",
@@ -2442,7 +2527,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-axios__WEBPACK_IMPORTED_MODULE_187___default.a.defaults.baseURL = 'http://localhost:8000/api';
+axios__WEBPACK_IMPORTED_MODULE_187___default.a.defaults.baseURL = '';
 Object(react_dom__WEBPACK_IMPORTED_MODULE_186__["render"])(react__WEBPACK_IMPORTED_MODULE_185___default.a.createElement(_Root__WEBPACK_IMPORTED_MODULE_188__["default"], null), document.querySelector('.root'));
 
 /***/ }),
@@ -2477,7 +2562,9 @@ __webpack_require__.r(__webpack_exports__);
 var Search = function Search(_ref) {
   var selectedEvent = _ref.selectedEvent,
       events = _ref.events,
-      setEvent = _ref.setEvent;
+      setEvent = _ref.setEvent,
+      userEvents = _ref.userEvents;
+  console.log("userEvents: " + userEvents);
 
   if (selectedEvent === null) {
     selectedEvent = {};
@@ -2676,80 +2763,7 @@ function (_PureComponent) {
         className: "EventList-feature"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "EventList-breadcrumbs"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(common_TextButton__WEBPACK_IMPORTED_MODULE_11__["default"], null, "Chicago"), " > Millennium Park"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("p", null, events.length, " Events Available")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_13___default.a, {
-        isOpen: this.state.showPostModal,
-        contentLabel: "Post Modal",
-        ariaHideApp: false,
-        className: "vitebrite-post",
-        closeTimeoutMS: 2000
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-header"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("a", {
-        href: "",
-        className: "modal-post-back",
-        onClick: this._onHandleClosePostModal
-      }, "Back to Search")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("img", {
-        className: "modal-post-image",
-        src: selectedEvent.image
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-title"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-title-text"
-      }, selectedEvent.title), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-title-distance"
-      }, selectedEvent.distance)), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-post-form-hr"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "first-name",
-        className: "modal-post-label first-name-label"
-      }, "First Name"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "first-name",
-        className: "first-name modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "last-name",
-        className: "modal-post-label last-name-label"
-      }, "Last Name"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "last-name",
-        className: "modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "email",
-        className: "modal-post-label email-label"
-      }, "Email"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "email",
-        className: "modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
-        forhtml: "phone",
-        className: "modal-post-label phone-label"
-      }, "Phone Number"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        name: "phone",
-        className: "modal-post-input"
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
-        type: "submit",
-        value: (selectedEvent.price / 100).toFixed(2),
-        className: "purchase-btn"
-      }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_13___default.a, {
-        isOpen: this.state.showGetModal,
-        contentLabel: "Get Modal",
-        ariaHideApp: false,
-        className: "vitebrite-modal",
-        closeTimeoutMS: 2000
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("a", {
-        href: "#",
-        className: "modal-close",
-        onClick: this._onHandleCloseGetModal
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-title modal-text"
-      }, "Event Details"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-address modal-text"
-      }, selectedEvent.title), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-        className: "modal-description"
-      }, selectedEvent.description), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("a", {
-        href: "#",
-        className: "bookit-btn",
-        onClick: this._onShowPostModal
-      }, "$", (selectedEvent.price / 100).toFixed(2), " | Book it!")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(common_TextButton__WEBPACK_IMPORTED_MODULE_11__["default"], null, "Chicago"), " > Millennium Park"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("p", null, events.length, " Events Available")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "EventList-events"
       }, _babel_runtime_corejs3_core_js_stable_instance_map__WEBPACK_IMPORTED_MODULE_0___default()(events).call(events, function (event) {
         return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(event_EventItem__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -60968,7 +60982,7 @@ function warning(message) {
 /*!********************************************************************************************************************!*\
   !*** /Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/react-router-dom/esm/react-router-dom.js ***!
   \********************************************************************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64183,7 +64197,7 @@ function middleware() {
     return createPromise()({ dispatch: dispatch });
   }
 
-  if (process && Object({"NODE_ENV":"development","npm_config_save_dev":"","npm_config_legacy_bundling":"","npm_config_dry_run":"","npm_package_devDependencies_json_server":"0.14.2","npm_config_viewer":"man","npm_config_only":"","npm_config_commit_hooks":"true","npm_config_browser":"","npm_package_gitHead":"60b0ac9629928558f61e1fdc33bc562ecc40f10a","npm_package_dependencies_redux":"4.0.1","npm_config_also":"","npm_config_sign_git_commit":"","npm_config_rollback":"true","TERM_PROGRAM":"Apple_Terminal","NODE":"/usr/local/bin/node","npm_config_usage":"","npm_config_audit":"true","INIT_CWD":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite","npm_package_dependencies_axios":"0.18.0","npm_package_homepage":"https://github.com/spothero/fe-code-challenge#readme","npm_config_globalignorefile":"/usr/local/etc/npmignore","SHELL":"/bin/bash","TERM":"xterm-256color","npm_config_shell":"/bin/bash","npm_config_maxsockets":"50","npm_config_init_author_url":"","npm_config_shrinkwrap":"true","npm_config_parseable":"","npm_config_metrics_registry":"https://registry.npmjs.org/","npm_package_dependencies_react_hot_loader":"4.8.4","TMPDIR":"/var/folders/rf/_dkgc2r95n73nb0kctw71pk40000gn/T/","npm_config_timing":"","npm_config_init_license":"ISC","Apple_PubSub_Socket_Render":"/private/tmp/com.apple.launchd.9fjMSmv6o9/Render","npm_config_if_present":"","npm_package_devDependencies_concurrently":"4.1.0","TERM_PROGRAM_VERSION":"404.1","npm_config_sign_git_tag":"","npm_config_init_author_email":"","npm_config_cache_max":"Infinity","npm_config_preid":"","npm_config_long":"","npm_config_local_address":"","npm_config_git_tag_version":"true","npm_config_cert":"","TERM_SESSION_ID":"F83C5030-C221-43FF-AA59-F67C40E86606","npm_config_registry":"https://registry.npmjs.org/","npm_config_noproxy":"","npm_config_fetch_retries":"2","npm_package_dependencies_react_dom":"16.8.6","npm_package_repository_url":"git+https://github.com/spothero/fe-code-challenge.git","npm_config_versions":"","npm_config_message":"%s","npm_config_key":"","npm_package_readmeFilename":"README.md","npm_package_dependencies_regenerator_runtime":"0.13.2","npm_package_description":"ViteBrite's Front End coding challenge.","USER":"michaelford","npm_package_license":"Apache-2.0","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_prefer_online":"","npm_config_logs_max":"10","npm_config_always_auth":"","npm_package_dependencies_connected_react_router":"6.4.0","SSH_AUTH_SOCK":"/private/tmp/com.apple.launchd.J1kBHZ0MYg/Listeners","__CF_USER_TEXT_ENCODING":"0x1F5:0x0:0x0","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","npm_config_global_style":"","npm_config_cache_lock_retries":"10","npm_config_update_notifier":"true","npm_config_cafile":"","npm_package_dependencies_react_redux":"7.0.3","npm_package_author_name":"ViteBrite","npm_config_heading":"npm","npm_config_audit_level":"low","npm_config_searchlimit":"20","npm_config_read_only":"","npm_config_offline":"","npm_config_fetch_retry_mintimeout":"10000","npm_package_dependencies_prop_types":"15.7.2","npm_config_json":"","npm_config_access":"","npm_config_argv":"{\"remain\":[],\"cooked\":[\"start\"],\"original\":[\"start\"]}","PATH":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/@spothero/ace/config/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/michaelford/mongo:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/mysql/bin","npm_config_allow_same_version":"","npm_config_https_proxy":"","npm_config_engine_strict":"","npm_config_description":"true","npm_package_devDependencies__spothero_ace":"8.0.2","_":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/.bin/webpack-dev-server","npm_config_userconfig":"/Users/michaelford/.npmrc","npm_config_init_module":"/Users/michaelford/.npm-init.js","npm_package_dependencies_redux_thunk":"2.3.0","npm_package_dependencies_react_modal":"3.8.1","npm_config_cidr":"","PWD":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/@spothero/ace/config","npm_config_user":"","npm_config_node_version":"10.15.3","npm_package_dependencies_core_js":"3.0.1","npm_package_bugs_url":"https://github.com/spothero/fe-code-challenge/issues","npm_lifecycle_event":"start","npm_config_save":"true","npm_config_ignore_prepublish":"","npm_config_editor":"vi","npm_config_auth_type":"legacy","npm_package_repository_type":"git","npm_package_name":"fe-code-challenge","LANG":"en_US.UTF-8","npm_config_tag":"latest","npm_config_script_shell":"","npm_config_progress":"true","npm_config_global":"","npm_package_scripts_start":"concurrently \"npm run db\" \"ACE_NPM_EVENT=start ace\"","npm_config_searchstaleness":"900","npm_config_optional":"true","npm_config_ham_it_up":"","npm_package_dependencies_react_router_dom":"5.0.0","XPC_FLAGS":"0x0","npm_config_save_prod":"","npm_config_force":"","npm_config_bin_links":"true","npm_package_scripts_db":"json-server --watch back-end/db.json --port 8000 --routes back-end/routes.json","FORCE_COLOR":"2","npm_config_searchopts":"","npm_package_dependencies_classnames":"2.2.6","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","npm_config_depth":"Infinity","npm_package_dependencies_redux_promise_middleware":"6.1.0","npm_package_scripts_cypress_open":"ace -- generateWebpackSettings && cypress open","npm_package_main":"index.js","ACE_NPM_EVENT":"start","npm_config_sso_poll_frequency":"500","npm_config_rebuild_bundle":"true","npm_package_version":"2.0.0","XPC_SERVICE_NAME":"0","npm_config_unicode":"true","npm_package_scripts_cypress_run":"ace -- generateWebpackSettings && cypress run","SHLVL":"4","HOME":"/Users/michaelford","npm_config_fetch_retry_maxtimeout":"60000","npm_package_scripts_test":"ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3000 && npm run cypress:open","npm_config_tag_version_prefix":"v","npm_config_strict_ssl":"true","npm_config_sso_type":"oauth","npm_config_scripts_prepend_node_path":"warn-only","npm_config_save_prefix":"^","npm_config_loglevel":"notice","npm_config_ca":"","npm_config_group":"20","npm_config_fetch_retry_factor":"10","npm_config_dev":"","npm_config_save_exact":"true","npm_config_version":"","npm_config_prefer_offline":"","npm_config_cache_lock_stale":"60000","npm_config_otp":"","npm_config_cache_min":"10","npm_config_searchexclude":"","npm_config_cache":"/Users/michaelford/.npm","LOGNAME":"michaelford","npm_lifecycle_script":"concurrently \"npm run db\" \"ACE_NPM_EVENT=start ace\"","npm_config_color":"true","npm_config_proxy":"","npm_config_package_lock":"true","npm_config_package_lock_only":"","npm_package_dependencies_react":"16.8.6","npm_config_save_optional":"","npm_config_ignore_scripts":"","npm_config_user_agent":"npm/6.4.1 node/v10.15.3 darwin x64","npm_config_cache_lock_wait":"10000","npm_config_production":"","DISPLAY":"/private/tmp/com.apple.launchd.JVxPBCPXP2/org.macosforge.xquartz:0","npm_config_send_metrics":"","npm_config_save_bundle":"","npm_package_dependencies_history":"4.9.0","npm_config_umask":"0022","npm_config_node_options":"","npm_config_init_version":"1.0.0","npm_config_init_author_name":"","npm_config_git":"git","npm_config_scope":"","SECURITYSESSIONID":"186a7","npm_config_unsafe_perm":"true","npm_config_tmp":"/var/folders/rf/_dkgc2r95n73nb0kctw71pk40000gn/T","npm_config_onload_script":"","npm_node_execpath":"/usr/local/bin/node","npm_config_prefix":"/usr/local","npm_config_link":""}) && ( true || false)) {
+  if (process && Object({"NODE_ENV":"development","npm_config_save_dev":"","npm_config_legacy_bundling":"","npm_config_dry_run":"","npm_package_devDependencies_json_server":"0.14.2","npm_config_viewer":"man","npm_config_only":"","npm_config_commit_hooks":"true","npm_config_browser":"","npm_package_gitHead":"d1c3a639db5e1a585a4997eb6d9a193d59e57aa2","npm_package_dependencies_redux":"4.0.1","npm_config_also":"","npm_config_sign_git_commit":"","npm_config_rollback":"true","TERM_PROGRAM":"Apple_Terminal","NODE":"/usr/local/bin/node","npm_config_usage":"","npm_config_audit":"true","INIT_CWD":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite","npm_package_dependencies_axios":"0.18.0","npm_package_homepage":"https://github.com/spothero/fe-code-challenge#readme","npm_config_globalignorefile":"/usr/local/etc/npmignore","SHELL":"/bin/bash","TERM":"xterm-256color","npm_config_shell":"/bin/bash","npm_config_maxsockets":"50","npm_config_init_author_url":"","npm_config_shrinkwrap":"true","npm_config_parseable":"","npm_config_metrics_registry":"https://registry.npmjs.org/","npm_package_dependencies_react_hot_loader":"4.8.4","TMPDIR":"/var/folders/rf/_dkgc2r95n73nb0kctw71pk40000gn/T/","npm_config_timing":"","npm_config_init_license":"ISC","Apple_PubSub_Socket_Render":"/private/tmp/com.apple.launchd.9fjMSmv6o9/Render","npm_config_if_present":"","npm_package_devDependencies_concurrently":"4.1.0","TERM_PROGRAM_VERSION":"404.1","npm_config_sign_git_tag":"","npm_config_init_author_email":"","npm_config_cache_max":"Infinity","npm_config_preid":"","npm_config_long":"","npm_config_local_address":"","npm_config_git_tag_version":"true","npm_config_cert":"","TERM_SESSION_ID":"F83C5030-C221-43FF-AA59-F67C40E86606","npm_config_registry":"https://registry.npmjs.org/","npm_config_noproxy":"","npm_config_fetch_retries":"2","npm_package_dependencies_react_dom":"16.8.6","npm_package_repository_url":"git+https://github.com/spothero/fe-code-challenge.git","npm_config_versions":"","npm_config_message":"%s","npm_config_key":"","npm_package_readmeFilename":"README.md","npm_package_dependencies_regenerator_runtime":"0.13.2","npm_package_description":"ViteBrite's Front End coding challenge.","USER":"michaelford","npm_package_license":"Apache-2.0","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_prefer_online":"","npm_config_logs_max":"10","npm_config_always_auth":"","npm_package_dependencies_connected_react_router":"6.4.0","SSH_AUTH_SOCK":"/private/tmp/com.apple.launchd.J1kBHZ0MYg/Listeners","__CF_USER_TEXT_ENCODING":"0x1F5:0x0:0x0","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","npm_config_global_style":"","npm_config_cache_lock_retries":"10","npm_config_update_notifier":"true","npm_config_cafile":"","npm_package_dependencies_react_redux":"7.0.3","npm_package_author_name":"ViteBrite","npm_config_heading":"npm","npm_config_audit_level":"low","npm_config_searchlimit":"20","npm_config_read_only":"","npm_config_offline":"","npm_config_fetch_retry_mintimeout":"10000","npm_package_dependencies_prop_types":"15.7.2","npm_config_json":"","npm_config_access":"","npm_config_argv":"{\"remain\":[],\"cooked\":[\"start\"],\"original\":[\"start\"]}","PATH":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/@spothero/ace/config/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/michaelford/mongo:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/mysql/bin","npm_config_allow_same_version":"","npm_config_https_proxy":"","npm_config_engine_strict":"","npm_config_description":"true","npm_package_devDependencies__spothero_ace":"8.0.2","_":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/.bin/webpack-dev-server","npm_config_userconfig":"/Users/michaelford/.npmrc","npm_config_init_module":"/Users/michaelford/.npm-init.js","npm_package_dependencies_redux_thunk":"2.3.0","npm_package_dependencies_react_modal":"3.8.1","npm_config_cidr":"","PWD":"/Users/michaelford/Desktop/ViteBrite07102019/vitebrite/node_modules/@spothero/ace/config","npm_config_user":"","npm_config_node_version":"10.15.3","npm_package_dependencies_core_js":"3.0.1","npm_package_bugs_url":"https://github.com/spothero/fe-code-challenge/issues","npm_lifecycle_event":"start","npm_config_save":"true","npm_config_ignore_prepublish":"","npm_config_editor":"vi","npm_config_auth_type":"legacy","npm_package_repository_type":"git","npm_package_name":"fe-code-challenge","LANG":"en_US.UTF-8","npm_config_tag":"latest","npm_config_script_shell":"","npm_config_progress":"true","npm_config_global":"","npm_package_scripts_start":"concurrently \"npm run db\" \"ACE_NPM_EVENT=start ace\"","npm_config_searchstaleness":"900","npm_config_optional":"true","npm_config_ham_it_up":"","npm_package_dependencies_react_router_dom":"5.0.0","XPC_FLAGS":"0x0","npm_config_save_prod":"","npm_config_force":"","npm_config_bin_links":"true","npm_package_scripts_db":"json-server --watch back-end/db.json --port 8000 --routes back-end/routes.json","FORCE_COLOR":"2","npm_config_searchopts":"","npm_package_dependencies_classnames":"2.2.6","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","npm_config_depth":"Infinity","npm_package_dependencies_redux_promise_middleware":"6.1.0","npm_package_scripts_cypress_open":"ace -- generateWebpackSettings && cypress open","npm_package_main":"index.js","ACE_NPM_EVENT":"start","npm_config_sso_poll_frequency":"500","npm_config_rebuild_bundle":"true","npm_package_version":"2.0.0","XPC_SERVICE_NAME":"0","npm_config_unicode":"true","npm_package_scripts_cypress_run":"ace -- generateWebpackSettings && cypress run","SHLVL":"4","HOME":"/Users/michaelford","npm_config_fetch_retry_maxtimeout":"60000","npm_package_scripts_test":"ACE_NPM_EVENT=test ace -- test & wait-on http://localhost:3002 && npm run cypress:open","npm_config_tag_version_prefix":"v","npm_config_strict_ssl":"true","npm_config_sso_type":"oauth","npm_config_scripts_prepend_node_path":"warn-only","npm_config_save_prefix":"^","npm_config_loglevel":"notice","npm_config_ca":"","npm_config_group":"20","npm_config_fetch_retry_factor":"10","npm_config_dev":"","npm_config_save_exact":"true","npm_config_version":"","npm_config_prefer_offline":"","npm_config_cache_lock_stale":"60000","npm_config_otp":"","npm_config_cache_min":"10","npm_config_searchexclude":"","npm_config_cache":"/Users/michaelford/.npm","LOGNAME":"michaelford","npm_lifecycle_script":"concurrently \"npm run db\" \"ACE_NPM_EVENT=start ace\"","npm_config_color":"true","npm_config_proxy":"","npm_config_package_lock":"true","npm_config_package_lock_only":"","npm_package_dependencies_react":"16.8.6","npm_config_save_optional":"","npm_config_ignore_scripts":"","npm_config_user_agent":"npm/6.4.1 node/v10.15.3 darwin x64","npm_config_cache_lock_wait":"10000","npm_config_production":"","DISPLAY":"/private/tmp/com.apple.launchd.JVxPBCPXP2/org.macosforge.xquartz:0","npm_config_send_metrics":"","npm_config_save_bundle":"","npm_package_dependencies_history":"4.9.0","npm_config_umask":"0022","npm_config_node_options":"","npm_config_init_version":"1.0.0","npm_config_init_author_name":"","npm_config_git":"git","npm_config_scope":"","SECURITYSESSIONID":"186a7","npm_config_unsafe_perm":"true","npm_config_tmp":"/var/folders/rf/_dkgc2r95n73nb0kctw71pk40000gn/T","npm_config_onload_script":"","npm_node_execpath":"/usr/local/bin/node","npm_config_prefix":"/usr/local","npm_config_link":""}) && ( true || false)) {
     // eslint-disable-next-line no-console
     console.warn('Redux Promise Middleware: As of version 6.0.0, the middleware library supports both preconfigured and custom configured middleware. To use a custom configuration, use the "createPromise" export and call this function with your configuration property. To use a preconfiguration, use the default export. For more help, check the upgrading guide: https://docs.psb.codes/redux-promise-middleware/upgrade-guides/v6\n\nFor custom configuration:\nimport { createPromise } from \'redux-promise-middleware\';\nconst promise = createPromise({ types: { fulfilled: \'success\' } });\napplyMiddleware(promise);\n\nFor preconfiguration:\nimport promise from \'redux-promise-middleware\';\napplyMiddleware(promise);\n    ');
   }
@@ -74002,4 +74016,4 @@ module.exports = __webpack_require__(/*! /Users/michaelford/Desktop/ViteBrite071
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main-b5bed03c932507d3b445.js.map
+//# sourceMappingURL=main-4686761838518d09a3f4.js.map

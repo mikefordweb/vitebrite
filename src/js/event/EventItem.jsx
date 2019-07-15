@@ -41,11 +41,33 @@ export default class EventItem extends PureComponent {
 
         return (
             <div className={classes}>
-                <Image src={image} />
-                <div className="EventItem-info">
-                    <h2>{title}</h2>
-                    <p>{distance}</p>
-                    {showDetails && <TextButton onClick={this._onDetailsClick}>Details</TextButton>}
+                <div className="date-time-table">
+                    <div className="date-time-column">
+                        <label htmlFor="date-start-date">Start Date</label>
+                        <div className="date-start-date">07/09/2019</div>
+                    </div>
+                    <div className="date-time-column">
+                        <label htmlFor="date-end-date">End Date</label>
+                        <div className="date-end-date">07/20/2019</div>
+                    </div>
+                </div>
+                <div className="EventItem-email">
+                    <div className="EmailItem">
+                        <div className="EmailItem-firstname">Mike</div>
+                        <div className="EmailItem-lastname">Ford</div>
+                        <div className="EmailItem-email">mike@mikefordweb.com</div>
+                    </div>
+                    
+                    <div className="EmailItem">
+                        <div className="EmailItem-firstname">Mike</div>
+                        <div className="EmailItem-lastname">Ford</div>
+                        <div className="EmailItem-email">floyd1985@hotmail</div>
+                    </div>
+                    <div className="EmailItem">
+                        <div className="EmailItem-firstname">Megan</div>
+                        <div className="EmailItem-lastname">Ford</div>
+                        <div className="EmailItem-email">meggin19@hotmail.com</div>
+                    </div>
                 </div>
             </div>
         );

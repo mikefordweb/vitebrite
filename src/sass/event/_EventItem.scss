@@ -1,5 +1,4 @@
 .EventItem {
-    display: flex;
     padding: 20px 25px;
     border-bottom: 1px solid darken($color-pavement, 5%);
 
@@ -42,30 +41,31 @@
     .TextButton {
         margin-top: 1em;
     }
+}
 
-    .EventItem-email {
-        border: 1px solid #000;
-    }
+.EventItem-email {
+    display: block;
+    width: 300px;
+    border: 1px solid #000;
+}
 
-    .EmailItem {
-        border: 1px solid #000;
-    }
+.EmailItem {
+    border: 1px solid #000;
+}
 
-    .EmailItem-firstname,
-    .EmailItem-lastname, 
-    .EmailItem-email {
-        display: inline-block;
-        position: relative;
-        border: 1px solid #000;
-    }
+.EmailItem-firstname,
+.EmailItem-lastname, 
+.EmailItem-email {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #000;
+}
 
-    .date-time-column {
-        display: inline-block;
-    }
+.date-time-column {
+    display: inline-block;
+}
 
-    .date-content {
-        border: 1px solid #000;
-        height: 80px;
-    }
-
+.date-content {
+    border: 1px solid #000;
+    height: 80px;
 }

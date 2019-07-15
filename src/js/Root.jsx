@@ -13,13 +13,14 @@ export default class Root extends Component {
 
     componentDidMount() {
         this._loadEvents();
+        this._loadUserEvents();
     }
 
     async _loadEvents() {
         try {
             const {
                 data
-            } = await axios.get('/events');
+            } = await axios.get('http://localhost:8000/api/events');
 
             this.setState({
                 isLoading: false,
@@ -30,10 +31,27 @@ export default class Root extends Component {
         }
     }
 
+    async _loadUserEvents() {
+        try {
+            const {
+                data
+            } = await axios.get('http://localhost:3001/api/getData');
+
+            console.log(data);
+
+            this.setState({
+                userEvents: data
+            });
+        } catch (error) {
+            console.log('Error loading event data: ', error); // eslint-disable-line no-console
+        }
+    }
+
     render() {
         const {
             isLoading,
-            events
+            events,
+            userEvents
         } = this.state;
 
         if (isLoading) {
@@ -48,7 +66,10 @@ export default class Root extends Component {
             <div className="Root">
                 <Provider store={createStore()}>
                     <ConnectedRouter history={getHistory()}>
-                        <App events={events} />
+                        <App 
+                            events={events}
+                            userEvents={userEvents}
+                        />
                     </ConnectedRouter>
                 </Provider>
             </div>

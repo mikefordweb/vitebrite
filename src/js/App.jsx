@@ -11,7 +11,8 @@ import Confirmation from 'confirmation/Confirmation';
 import Search from 'search/Search';
 
 const App = ({
-    events
+    events,
+    userEvents
 }) => {
     return (
         <Switch>
@@ -19,7 +20,7 @@ const App = ({
                 exact
                 path="/"
                 render={() => {
-                    return <Search events={events} />;
+                    return <Search events={events} userEvents={userEvents} />;
                 }}
             />
             <Route
